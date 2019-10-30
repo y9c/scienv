@@ -22,7 +22,8 @@ with open(
     os.path.join(here, "data/PACKAGES"), encoding="utf-8"
 ) as package_file:
     for line in package_file.readlines():
-        if not line.startswith("#"):
+        line = line.strip()
+        if not line.startswith("#") and len(line) >= 1:
             requirements.append(line.replace(" ", ""))
 
 setup_requirements = []
@@ -61,6 +62,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/yech1990/scienv",
-    version='0.0.0.dev2',
+    version='0.0.0.dev3',
     zip_safe=False,
 )
