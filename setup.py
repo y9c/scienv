@@ -3,13 +3,17 @@
 
 """The setup script."""
 
+import os
+from codecs import open
+
 from setuptools import find_packages, setup
 
-with open("README.rst") as readme_file:
-    readme = readme_file.read()
+here = os.path.abspath(os.path.dirname(__file__))
 
-with open("HISTORY.rst") as history_file:
-    history = history_file.read()
+# Get the long description from the README file
+with open(os.path.join(here, "README.md"), encoding="utf-8") as readme_file:
+    long_description = readme_file.read()
+
 
 # The sci packages
 requirements = [
@@ -53,7 +57,8 @@ setup(
     entry_points={"console_scripts": ["scienv=scienv.cli:main"]},
     install_requires=requirements,
     license="MIT license",
-    long_description=readme + "\n\n" + history,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     include_package_data=True,
     keywords="scienv",
     name="scienv",
