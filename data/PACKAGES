@@ -7,7 +7,7 @@ beautifulsoup4>=4.4.0
 requests>=2.20.0
 
 # database
-pysqlite>=2.8.0
+pysqlite>=2.8.0;python_version<="2.7"
 
 # data process
 numpy>=1.15.0
@@ -20,7 +20,7 @@ scikit-learn>=0.20.0
 
 
 # image process
-opencv-python>=4.1.0.0
+opencv-python>=4.1.0;python_version<"3.8"
 
 
 # visualization

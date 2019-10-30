@@ -63,6 +63,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/yech1990/scienv",
-    version="0.0.0.dev6",
+    version='0.0.0.dev9',
     zip_safe=False,
 )
