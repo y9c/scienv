@@ -19,12 +19,12 @@ with open(os.path.join(here, "README.md"), encoding="utf-8") as readme_file:
 requirements = []
 # parse requirements from file
 with open(
-    os.path.join(here, "data/PACKAGES"), encoding="utf-8"
+    os.path.join(here, "data", "PACKAGES"), encoding="utf-8"
 ) as package_file:
     for line in package_file.readlines():
-        line = line.strip()
+        line = line.strip().replace(" ", "")
         if not line.startswith("#") and len(line) >= 1:
-            requirements.append(line.replace(" ", ""))
+            requirements.append(line)
 
 setup_requirements = []
 
@@ -55,6 +55,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     include_package_data=True,
+    data_files=[("", ["data/PACKAGES"])],
     keywords="scienv",
     name="scienv",
     packages=find_packages(include=["scienv", "scienv.*"]),
@@ -62,6 +63,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/yech1990/scienv",
-    version='0.0.0.dev3',
+    version="0.0.0.dev6",
     zip_safe=False,
 )
