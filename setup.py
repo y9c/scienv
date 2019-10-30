@@ -6,7 +6,25 @@
 import os
 from codecs import open
 
-from setuptools import find_packages, setup
+from setuptools import Command, find_packages, setup
+
+
+# enchanced clean command
+class CleanCommand(Command):
+    """Custom clean command to tidy up the project root."""
+
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        """delete the build and sdist files."""
+        os.system("rm -vrf ./build ./dist ./*.pyc ./*.tgz ./*.egg-info")
+
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -63,6 +81,7 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/yech1990/scienv",
-    version='0.0.0.dev9',
+    version='0.0.0.dev10',
     zip_safe=False,
+    cmdclass={"clean": CleanCommand},
 )
