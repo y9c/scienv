@@ -16,25 +16,19 @@ with open(os.path.join(here, "README.md"), encoding="utf-8") as readme_file:
 
 
 # The sci packages
-requirements = [
-    "Click>=7.0",
-    "numba >= 0.45.0",
-    "Cython >= 0.28.0",
-    "numpy >= 1.15.0",
-    "scipy >= 1.0.0",
-    "scikit-learn >= 0.20.0",
-    "networkx >= 2.0",
-    "matplotlib >= 3.0.0",
-    "bokeh >= 1.0.0",
-    "seaborn >= 0.8.0",
-    "notebook >= 6.0.0",
-    "jupyter >= 1.0.0",
-    "jupyterlab >= 1.0.0",
-]
+requirements = []
+# parse requirements from file
+with open(
+    os.path.join(here, "data/PACKAGES"), encoding="utf-8"
+) as package_file:
+    for line in package_file.readlines():
+        if not line.startswith("#"):
+            requirements.append(line.replace(" ", ""))
 
 setup_requirements = []
 
 test_requirements = []
+
 
 setup(
     author="Ye Chang",
@@ -67,6 +61,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/yech1990/scienv",
-    version="0.0.0.dev0",
+    version='0.0.0.dev2',
     zip_safe=False,
 )

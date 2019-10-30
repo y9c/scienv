@@ -7,7 +7,7 @@ fi
 
 version=$1
 
-sed -i "/  version/ s/='[^'][^']*'/='${version}'/" setup.py
+sed -i "/  version/ s/=[\"\'][^'][^']*[\"\']/='${version}'/" setup.py
 package_name="scienv"
 
 python setup.py sdist
